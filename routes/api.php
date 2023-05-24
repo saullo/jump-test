@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceOrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Retorna todos os itens da tabela 'service_orders'
+Route::get('services', [ServiceOrderController::class, 'index']);
+
+// Adiciona um item na tabela 'service_orders'
+Route::post('services', [ServiceOrderController::class, 'store']);
